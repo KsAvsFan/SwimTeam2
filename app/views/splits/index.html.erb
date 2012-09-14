@@ -1,0 +1,35 @@
+<h1>Listing splits</h1>
+
+<table>
+  <tr>
+    <th>Swimmer</th>
+    <th>Event date</th>
+    <th>Distance</th>
+    <th>Event type</th>
+    <th>Split time</th>
+    <th>Notes</th>
+    <th>Stroke</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @splits.each do |split| %>
+  <tr>
+    <td><%= split.swimmer_id %></td>
+    <td><%= split.event_date %></td>
+    <td><%= split.distance %></td>
+    <td><%= split.event_type %></td>
+    <td><%= split.split_time %></td>
+    <td><%= split.notes %></td>
+    <td><%= split.stroke %></td>
+    <td><%= link_to 'Show', split %></td>
+    <td><%= link_to 'Edit', edit_split_path(split) %></td>
+    <td><%= link_to 'Destroy', split, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Split', new_split_path %>

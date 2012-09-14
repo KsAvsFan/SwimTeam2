@@ -1,0 +1,47 @@
+<h1>Listing families</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>First name</th>
+    <th>Relationship</th>
+    <th>Home phone</th>
+    <th>Mobile phone</th>
+    <th>Work phone</th>
+    <th>Email</th>
+    <th>First name</th>
+    <th>Relationship</th>
+    <th>Home phone</th>
+    <th>C2 mobile phone</th>
+    <th>C2 work phone</th>
+    <th>C2 email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @families.each do |family| %>
+  <tr>
+    <td><%= family.name %></td>
+    <td><%= family.c1_first_name %></td>
+    <td><%= family.c1_relationship %></td>
+    <td><%= family.c1_home_phone %></td>
+    <td><%= family.c1_mobile_phone %></td>
+    <td><%= family.c1_work_phone %></td>
+    <td><%= family.c1_email %></td>
+    <td><%= family.c2_first_name %></td>
+    <td><%= family.c2_relationship %></td>
+    <td><%= family.c2_home_phone %></td>
+    <td><%= family.c2_mobile_phone %></td>
+    <td><%= family.c2_work_phone %></td>
+    <td><%= family.c2_email %></td>
+    <td><%= link_to 'Show', family %></td>
+    <td><%= link_to 'Edit', edit_family_path(family) %></td>
+    <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Family', new_family_path %>

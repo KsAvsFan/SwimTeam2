@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @swimmer.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @swimmer.last_name %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @swimmer.gender %>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%= @swimmer.dob %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @swimmer.email %>
+</p>
+
+<p>
+  <b>Shirt size:</b>
+  <%= @swimmer.shirt_size %>
+</p>
+
+<p>
+  <b>Family:</b>
+  <%= @swimmer.family_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_swimmer_path(@swimmer) %> |
+<%= link_to 'Back', swimmers_path %>

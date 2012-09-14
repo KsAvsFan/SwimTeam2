@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Swimmer:</b>
+  <%= @split.swimmer_id %>
+</p>
+
+<p>
+  <b>Event date:</b>
+  <%= @split.event_date %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @split.distance %>
+</p>
+
+<p>
+  <b>Event type:</b>
+  <%= @split.event_type %>
+</p>
+
+<p>
+  <b>Split time:</b>
+  <%= @split.split_time %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @split.notes %>
+</p>
+
+<p>
+  <b>Stroke:</b>
+  <%= @split.stroke %>
+</p>
+
+
+<%= link_to 'Edit', edit_split_path(@split) %> |
+<%= link_to 'Back', splits_path %>

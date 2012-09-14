@@ -1,0 +1,33 @@
+<h1>Listing swimmers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Shirt</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @swimmers.each do |swimmer| %>
+  <tr>
+    <td><b><%= swimmer.last_name %></b>, <%= swimmer.first_name %></td>
+    <td><%= swimmer.gender %></td>
+    <td><%= swimmer.age_in_years %></td>
+    <td><%= swimmer.email %></td>
+    <td><%= swimmer.shirt_size %></td>
+    <td><%= link_to 'Show', swimmer %></td>
+    <td><%= link_to 'Edit', edit_swimmer_path(swimmer) %></td>
+    <td><%= link_to 'Destroy', swimmer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'To Family', family_path(:id => swimmer.family_id) %></td>
+    <td><%= link_to 'See Siblings', swimmers_path(:filter => swimmer.family_id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Swimmer', new_swimmer_path %>

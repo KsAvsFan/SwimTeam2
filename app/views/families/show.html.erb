@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p><b>Family Name: <%= @family.name %></b></p>
+
+<div class="field-div">
+  <p><b>Primary Contact</b></p>
+  <p><%= @family.c1_first_name %> <%= @family.c1_last_name %> - <%= @family.c1_relationship %></p>
+  <p>Home phone: <%= number_to_phone(@family.c1_home_phone.to_i) %></p>
+  <p>Mobile phone: <%= number_to_phone(@family.c1_mobile_phone.to_i) %></p>
+  <p>Work phone: <%= number_to_phone(@family.c1_work_phone.to_i) %></p>
+  <p><%= @family.c1_email %></p>
+</div>
+
+<div class = "field-div">
+  <p><b>Secondary Contact</b></p>
+  <p><%= @family.c2_first_name %> <%= @family.c2_last_name %> - <%= @family.c2_relationship %></p>
+  <p>Home phone: <%= number_to_phone(@family.c1_home_phone.to_i) %></p>
+  <p>Mobile phone: <%= number_to_phone(@family.c1_mobile_phone.to_i) %></p>
+  <p>Work phone: <%= number_to_phone(@family.c1_work_phone.to_i) %></p>
+  <p><%= @family.c2_email %></p>
+</div>
+
+<div class="field-div">
+  <p><b>Emergency contact:</b></p>
+  <%= @family.emergency_contact %>
+</div>
+<div class="clear"></div>
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %> | <%= link_to 'See Siblings', swimmers_path(:filter => @family.id) %> |
+<%= link_to 'Add Swimmer', new_swimmer_path(:family=>@family.id) %>

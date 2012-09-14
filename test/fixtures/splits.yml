@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  swimmer_id: 1
+  event_date: 2012-09-13
+  distance: 1
+  event_type: MyString
+  split_time: 1
+  notes: MyText
+  stroke: MyString
+
+two:
+  swimmer_id: 1
+  event_date: 2012-09-13
+  distance: 1
+  event_type: MyString
+  split_time: 1
+  notes: MyText
+  stroke: MyString
