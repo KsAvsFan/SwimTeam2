@@ -14,7 +14,7 @@ class FamiliesController < ApplicationController
   # GET /families/1.json
   def show
     @family = Family.find(params[:id])
-
+    @swimmers = Swimmer.find_all_by_family_id(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @family }

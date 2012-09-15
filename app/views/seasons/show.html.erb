@@ -2,17 +2,17 @@
 
 <p>
   <b>Start date:</b>
-  <%= @season.start_date %>
+  <%= @season.start_date.strftime("%D") %>
 </p>
 
 <p>
   <b>End date:</b>
-  <%= @season.end_date %>
+  <%= @season.end_date.strftime("%D") %>
 </p>
 
 <p>
   <b>Meet date:</b>
-  <%= @season.meet_date %>
+  <%= @season.meet_date.strftime("%D") %>
 </p>
 
 <p>

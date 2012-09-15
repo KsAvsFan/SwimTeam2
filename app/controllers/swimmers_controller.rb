@@ -40,7 +40,7 @@ class SwimmersController < ApplicationController
   # POST /swimmers.json
   def create
     @swimmer = Swimmer.new(params[:swimmer])
-
+    @swimmer.gender = params[:gender]
     respond_to do |format|
       if @swimmer.save
         format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }
@@ -56,7 +56,7 @@ class SwimmersController < ApplicationController
   # PUT /swimmers/1.json
   def update
     @swimmer = Swimmer.find(params[:id])
-
+    @swimmer.gender = params[:gender]
     respond_to do |format|
       if @swimmer.update_attributes(params[:swimmer])
         format.html { redirect_to @swimmer, notice: 'Swimmer was successfully updated.' }

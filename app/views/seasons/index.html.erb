@@ -1,12 +1,12 @@
-<h1>Listing seasons</h1>
+<h1>Season Manager</h1>
 
 <table>
   <tr>
+    <th>Name</th>
     <th>Start date</th>
     <th>End date</th>
     <th>Meet date</th>
     <th>Active</th>
-    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +14,11 @@
 
 <% @seasons.each do |season| %>
   <tr>
-    <td><%= season.start_date %></td>
-    <td><%= season.end_date %></td>
-    <td><%= season.meet_date %></td>
-    <td><%= season.active %></td>
-    <td><%= season.name %></td>
+    <td><b><%= season.name %></b></td>
+    <td><%= season.start_date.strftime("%D") %></td>
+    <td><%= season.end_date.strftime("%D") %></td>
+    <td><%= season.meet_date.strftime("%D") %></td>
+    <td><%= season.active.to_s.upcase %></td>
     <td><%= link_to 'Show', season %></td>
     <td><%= link_to 'Edit', edit_season_path(season) %></td>
     <td><%= link_to 'Destroy', season, method: :delete, data: { confirm: 'Are you sure?' } %></td>

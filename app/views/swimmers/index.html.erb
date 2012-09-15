@@ -21,9 +21,10 @@
     <td><%= swimmer.shirt_size %></td>
     <td><%= link_to 'Show', swimmer %></td>
     <td><%= link_to 'Edit', edit_swimmer_path(swimmer) %></td>
-    <td><%= link_to 'Destroy', swimmer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'To Family', family_path(:id => swimmer.family_id) %></td>
-    <td><%= link_to 'See Siblings', swimmers_path(:filter => swimmer.family_id) %></td>
+    <td><%= link_to 'Destroy', swimmer, method: :delete, data: { confirm: 'Are you sure?' } %> |</td>
+    <td><%= link_to 'Family', family_path(:id => swimmer.family_id) %></td>
+    <td><%= link_to 'Siblings', swimmers_path(:filter => swimmer.family_id) %></td>
+    <td><%= link_to 'Splits', splits_path(:filter => swimmer.id) %></td>
   </tr>
 <% end %>
 </table>

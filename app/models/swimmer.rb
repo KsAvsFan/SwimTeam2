@@ -11,4 +11,8 @@ class Swimmer < ActiveRecord::Base
     age -= 1 if Date.today < self.dob + age.years #for days before birthday
     return age
   end
+
+  def full_name
+    "#{last_name}, #{first_name}" 
+  end
 end

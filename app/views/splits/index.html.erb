@@ -16,7 +16,7 @@
 
 <% @splits.each do |split| %>
   <tr>
-    <td><%= split.swimmer_id %></td>
+    <td><%= Swimmer.find(split.swimmer_id).full_name %></td>
     <td><%= split.event_date %></td>
     <td><%= split.distance %></td>
     <td><%= split.event_type %></td>

@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :family_id %><br />
+    <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+  </div>  
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
@@ -20,12 +24,14 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= radio_button_tag(:gender, "Female") %>
+    <%= label_tag(:Female, "Female") %>
+    <%= radio_button_tag(:gender, "Male") %>
+    <%= label_tag(:Male, "Male") %>   
   </div>
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.date_select :dob %>
+    <%= f.text_field :dob, :class => "date_picker" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -33,11 +39,7 @@
   </div>
   <div class="field">
     <%= f.label :shirt_size %><br />
-    <%= f.text_field :shirt_size %>
-  </div>
-  <div class="field">
-    <%= f.label :family_id %><br />
-    <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+    <%= f.collection_select(:shirt_size, Shirt.all, :size, :size) %>
   </div>
   <div class="actions">
     <%= f.submit %>

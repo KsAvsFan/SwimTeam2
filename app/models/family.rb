@@ -3,4 +3,11 @@ class Family < ActiveRecord::Base
 
   has_many :swimmers
 
+  def c1_full_name
+    "#{c1_first_name} #{c1_last_name}" 
+  end
+
+  def c2_full_name
+    "#{c2_first_name} #{c2_last_name}" 
+  end
 end

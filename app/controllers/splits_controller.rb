@@ -2,8 +2,7 @@ class SplitsController < ApplicationController
   # GET /splits
   # GET /splits.json
   def index
-    @splits = Split.all
-
+    params[:filter] ? @splits = Split.where("swimmer_id = ?", params[:filter]) : @splits = Split.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @splits }
@@ -14,7 +13,6 @@ class SplitsController < ApplicationController
   # GET /splits/1.json
   def show
     @split = Split.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @split }
@@ -41,6 +39,7 @@ class SplitsController < ApplicationController
   # POST /splits.json
   def create
     @split = Split.new(params[:split])
+    @split.distance = Event.find_by_name(@split.stroke).distance
 
     respond_to do |format|
       if @split.save
@@ -57,7 +56,8 @@ class SplitsController < ApplicationController
   # PUT /splits/1.json
   def update
     @split = Split.find(params[:id])
-
+    @split.distance = Event.find_by_name(@split.stroke).distance
+    
     respond_to do |format|
       if @split.update_attributes(params[:split])
         format.html { redirect_to @split, notice: 'Split was successfully updated.' }
