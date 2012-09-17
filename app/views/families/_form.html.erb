@@ -1,89 +1,129 @@
-<%= form_for(@family) do |f| %>
-  <% if @family.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:</h2>
+<%= form_for(@family, :html => { :class => "form-horizontal well"} ) do |f| %>
+	<% if @family.errors.any? %>
+		<div class="alert alert-error" id="error">
+			<%= link_to "x", "#", :class=>"close", :onclick => "document.getElementById('error').style.display='none'" %> 
+			<strong>Error! </strong><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:
+			<ul>
+			<% @family.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="control-group">
+		<b><%= f.label :Family_Name, :class => "control-label" %></b>
+		<div class="controls">
+			<%= f.text_field :name %>
+		</div>
+	</div>  
+	<div>
+		<div class="span5">
+			<div class="control-group">
+				<div class="controls">
+					<h4>Primary Contact</h4>
+				</div>
+				<%= f.label :First_name, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_first_name %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Last_name, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_last_name %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Relationship, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_relationship %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Home_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_home_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Mobile_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_mobile_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Work_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_work_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Email, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c1_email %>
+				</div>
+			</div>
+		</div>
+		<div class="span5">
+			<div class="control-group">
+				<div class="controls">
+					<h4>Secondary Contact</h4>
+				</div>
+				<%= f.label :First_name, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_first_name %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Last_name, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_last_name %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Relationship, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_relationship %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Home_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_home_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Mobile_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_mobile_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Work_phone, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_work_phone %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :Email, :class => "control-label" %>
+				<div class="controls">
+					<%= f.text_field :c2_email %>
+				</div>
+			</div>
+		</div>
+	</div>
 
-      <ul>
-      <% @family.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <h4><%= f.label :Family_Name %></h4>
-    <%= f.text_field :name %>
-  </div>  
-  <div class="field-div">
-    <div class="field">
-      <h4>Primary Contact</h4>
-      <%= f.label :First_name %><br />
-      <%= f.text_field :c1_first_name %>
-    </div>
-    <div class="field">
-      <%= f.label :Last_name %><br />
-      <%= f.text_field :c1_last_name %>
-    </div>
-    <div class="field">
-      <%= f.label :Relationship %><br />
-      <%= f.text_field :c1_relationship %>
-    </div>
-    <div class="field">
-      <%= f.label :Home_phone %><br />
-      <%= f.text_field :c1_home_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Mobile_phone %><br />
-      <%= f.text_field :c1_mobile_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Work_phone %><br />
-      <%= f.text_field :c1_work_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Email %><br />
-      <%= f.text_field :c1_email %>
-    </div>
-  </div>
-  <div class="field-div">
-    <div class="field">
-      <h4>Secondary Contact</h4>
-      <%= f.label :First_name %><br />
-      <%= f.text_field :c2_first_name %>
-    </div>
-    <div class="field">
-      <%= f.label :Last_name %><br />
-      <%= f.text_field :c2_last_name %>
-    </div>
-    <div class="field">
-      <%= f.label :Relationship %><br />
-      <%= f.text_field :c2_relationship %>
-    </div>
-    <div class="field">
-      <%= f.label :Home_phone %><br />
-      <%= f.text_field :c2_home_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Mobile_phone %><br />
-      <%= f.text_field :c2_mobile_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Work_phone %><br />
-      <%= f.text_field :c2_work_phone %>
-    </div>
-    <div class="field">
-      <%= f.label :Email %><br />
-      <%= f.text_field :c2_email %>
-    </div>
-  </div>
-  <div class="clear">
-    <div class="field">
-      <h4><%= f.label :emergency_contact %></h4>
-      <%= f.text_area :emergency_contact %>
-    </div>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="span12">
+		<div class="control-group">
+			<%= f.label :emergency_contact, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_area :emergency_contact, :class => "span8" %>
+			</div>
+		</div>
+	</div>
+	<div class="control-group actions">
+		<div class="controls">
+			<%= f.submit(:class=>"btn btn-success") %>
+		</div>
+	</div>
 <% end %>

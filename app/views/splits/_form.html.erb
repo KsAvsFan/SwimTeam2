@@ -1,8 +1,8 @@
-<%= form_for(@split, :html => { :name => "timeform"}) do |f| %>
+<%= form_for(@split, :html => { :name => "timeform", :class => "form-horizontal well"}) do |f| %>
   <% if @split.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@split.errors.count, "error") %> prohibited this split from being saved:</h2>
-
+    <div class="alert alert-error" id="error">
+      <%= link_to "x", "#", :class=>"close", :onclick => "document.getElementById('error').style.display='none'" %> 
+      <strong>Error! </strong><%= pluralize(@split.errors.count, "error") %> prohibited this split from being saved:
       <ul>
       <% @split.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,37 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :swimmer_id %><br />
-    <%= f.collection_select(:swimmer_id, Swimmer.all, :id, :full_name) %>
+  <div class="control-group">
+    <%= f.label :swimmer_id , :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:swimmer_id, Swimmer.all, :id, :full_name) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Date %><br />
-    <%= f.text_field :event_date, :value => Date.today %>
+  <div class="control-group">
+    <%= f.label :Date, :class => "control-label" %>
+      <div class="controls"><%= f.text_field :event_date, :value => Date.today %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :stroke %><br />
-    <%= f.collection_select(:stroke, Event.all, :name, :name)%>
+  <div class="control-group">
+    <%= f.label :stroke, :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:stroke, Event.all, :name, :name)%>
+    </div>
   </div>
   
-  <div class="field">
-    <%= f.label :event_type %><br />
-    <%= f.text_field :event_type, :placeholder => "Practice, meet, etc." %>
+  <div class="control-group">
+    <%= f.label :event_type, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :event_type, :placeholder => "Practice, meet, etc." %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :split_time %><br />
-    <%= f.text_field :split_time, :id => "timetextarea", :value => "00:00" %><br />
-    <%= f.label :laptime %><br />
-    <%= f.text_field :split_time, :id => "laptime" %>
-    <input type=button name="start" value="Start/Lap" onclick="sw_start()"> 
-    <input type=button name="stop" value="Stop" onclick="Stop()"> 
-    <input type=button name="reset" value="Reset" onclick="Reset()">
+  <div class="control-group">
+    <%= f.label :split_time, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :split_time, :id => "timetextarea", :value => "00:00" %><br /><br />
+    </div>
+    <%= f.label :laptime, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :laptime, :id => "laptime" %><br >
+    </div>
+    <div class="control-group">
+      <div class="chrono-buttons controls">
+        <input type=button class = "btn btn-mini btn-danger" name="start" value="Start/Lap" onclick="sw_start()"> 
+        <input type=button class = "btn btn-mini btn-success" name="stop" value="Stop" onclick="Stop()"> 
+        <input type=button class = "btn btn-mini btn-inverse" name="reset" value="Reset" onclick="Reset()">
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br />
-    <%= f.text_area :notes %>
+  <div class="control-group">
+    <%= f.label :notes, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :notes %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <div class="controls">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

@@ -1,12 +1,10 @@
-<h1>Listing families</h1>
+<h4>Families</h4>
 
-<table>
+<table class="table">
   <tr>
     <th>Family Name</th>
     <th>1st Contact</th>
-    <th>Relationship</th>
     <th>2nd Contact</th>
-    <th>Relationship</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,17 +13,22 @@
 <% @families.each do |family| %>
   <tr>
     <td><%= family.name %></td>
-    <td><%= family.c1_full_name %></td>
-    <td><%= family.c1_relationship %></td>
-    <td><%= family.c2_full_name %></td>
-    <td><%= family.c2_relationship %></td>
-    <td><%= link_to 'Show', family %></td>
-    <td><%= link_to 'Edit', edit_family_path(family) %></td>
-    <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= family.c1_full_name %> (<%= family.c1_relationship %>)</td>
+    <td><%= family.c2_full_name %> (<%= family.c2_relationship %>)</td>
+    <td>
+        <div class="btn-group">
+          <%= link_to 'Details', family, :class => "btn btn-small" %>
+          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit', edit_family_path(family) %></li>
+            <li><%= link_to 'Delete', family, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </div><!-- /btn-group -->
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Family', new_family_path %>
+<%= link_to 'Add Family', new_family_path, :class => "btn btn-small btn-primary" %>

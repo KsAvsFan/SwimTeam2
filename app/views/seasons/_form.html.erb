@@ -1,8 +1,8 @@
-<%= form_for(@season) do |f| %>
+<%= form_for(@season, :html => { :name => "timeform", :class => "form-horizontal well"}) do |f| %>
   <% if @season.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@season.errors.count, "error") %> prohibited this season from being saved:</h2>
-
+    <div class="alert alert-error" id="error_explanation">
+      <%= link_to "x", "#", :class=>"close", :onclick => "document.getElementById('error').style.display='none'" %> 
+      <strong>Error! </strong><%= pluralize(@season.errors.count, "error") %> prohibited this season from being saved:
       <ul>
       <% @season.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,27 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :start_date %><br />
-    <%= f.text_field :start_date, :class => "date_picker" %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br />
-    <%= f.text_field :end_date, :class => "date_picker" %>
+  <div class="control-group">
+    <%= f.label :start_date, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :start_date, :class => "date_picker" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :meet_date %><br />
-    <%= f.text_field :meet_date, :class => "date_picker" %>
+  <div class="control-group">
+    <%= f.label :end_date, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :end_date, :class => "date_picker" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+  <div class="control-group">
+    <%= f.label :meet_date, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :meet_date, :class => "date_picker" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :active, :class => "control-label" %>
+    <div class="controls">
+      <%= f.check_box :active, :class=>"checkbox" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group actions">
+    <div class="controls">
+      <%= f.submit(:class=>"btn btn-success") %>
+    </div>
   </div>
 <% end %>

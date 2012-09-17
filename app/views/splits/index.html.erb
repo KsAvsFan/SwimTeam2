@@ -1,35 +1,39 @@
-<h1>Listing splits</h1>
+<h4>Listing splits</h4>
 
-<table>
+<table class="table">
   <tr>
     <th>Swimmer</th>
-    <th>Event date</th>
-    <th>Distance</th>
-    <th>Event type</th>
-    <th>Split time</th>
-    <th>Notes</th>
+    <th>Date</th>
     <th>Stroke</th>
+<!--     <th>Type</th> -->
+    <th>Time</th>
+    <th>Notes</th>
     <th></th>
-    <th></th>
-    <th></th>
+
   </tr>
 
 <% @splits.each do |split| %>
   <tr>
     <td><%= Swimmer.find(split.swimmer_id).full_name %></td>
-    <td><%= split.event_date %></td>
-    <td><%= split.distance %></td>
-    <td><%= split.event_type %></td>
+    <td><%= split.event_date.strftime("%D") %></td>
+    <td><%= split.stroke %></td>
+ <!--    <td><%= split.event_type %></td> -->
     <td><%= split.split_time %></td>
     <td><%= split.notes %></td>
-    <td><%= split.stroke %></td>
-    <td><%= link_to 'Show', split %></td>
-    <td><%= link_to 'Edit', edit_split_path(split) %></td>
-    <td><%= link_to 'Destroy', split, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+        <div class="btn-group">
+          <%= link_to 'Details', split, :class => "btn btn-small" %>
+          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit', edit_split_path(split) %></li>
+            <li><%= link_to 'Delete', split, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </div><!-- /btn-group -->
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Split', new_split_path %>
+<%= link_to 'New Split', new_split_path, :class => "btn btn-small btn-success" %>

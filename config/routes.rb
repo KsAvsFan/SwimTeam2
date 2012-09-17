@@ -1,4 +1,6 @@
 SwimTeam2::Application.routes.draw do
+  devise_for :users
+
   resources :events
 
   resources :seasons
@@ -9,5 +11,7 @@ SwimTeam2::Application.routes.draw do
 
   resources :families
 
+  resources :teams
+  
   root :to => 'seasons#index'
 end

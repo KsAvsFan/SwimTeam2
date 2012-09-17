@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery.ui.datepicker
+//= require twitter/bootstrap
 //= require_tree .
 
 $.datepicker.formatDate('yy-mm-dd');
@@ -122,3 +124,7 @@ function Reset() {
 	document.timeform.timetextarea.value = "00:00";
 	document.timeform.laptime.value = "";
 }
+
+$(document).ready(function () {
+          $(".alert").delay(2000).fadeOut(400);
+});

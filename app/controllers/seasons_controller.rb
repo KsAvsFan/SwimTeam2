@@ -60,7 +60,7 @@ class SeasonsController < ApplicationController
 
     respond_to do |format|
       if @season.update_attributes(params[:season])
-        format.html { redirect_to @season, notice: 'Season was successfully updated.' }
+        format.html { redirect_to seasons_url, notice: 'Season was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,4 +80,6 @@ class SeasonsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 end

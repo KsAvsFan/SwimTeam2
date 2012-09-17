@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require jquery.ui.datepicker
+ *= require bootstrap_and_overrides
  */
 
 
@@ -24,3 +25,6 @@
  	clear: both;
  }
 
+.chrono-buttons {
+	margin-top: 5px;
+}

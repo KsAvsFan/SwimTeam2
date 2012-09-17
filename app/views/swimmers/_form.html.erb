@@ -1,8 +1,8 @@
-<%= form_for(@swimmer) do |f| %>
+<%= form_for(@swimmer, :html => { :name => "timeform", :class => "form-horizontal well"}) do |f| %>
   <% if @swimmer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
-
+    <div class="alert alert-error" id="error">
+      <%= link_to "x", "#", :class=>"close", :onclick => "document.getElementById('error').style.display='none'" %> 
+      <strong>Error! </strong><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:
       <ul>
       <% @swimmer.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,37 +11,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :family_id %><br />
-    <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+  <div class="control-group">
+    <%= f.label :family_id, :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+    </div>
   </div>  
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+  <div class="control-group">
+    <%= f.label :first_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :first_name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+  <div class="control-group">
+    <%= f.label :last_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :last_name %>
+    </div>
   </div>
-  <div class="field">
-    <%= radio_button_tag(:gender, "Female") %>
-    <%= label_tag(:Female, "Female") %>
-    <%= radio_button_tag(:gender, "Male") %>
-    <%= label_tag(:Male, "Male") %>   
+  <div class="control-group">
+    <%= f.label :gender, :class => "control-label" %>
+    <div class="controls">
+      <select name="gender">
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
+    </div>
+    
   </div>
-  <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.text_field :dob, :class => "date_picker" %>
+  <div class="control-group">
+    <%= f.label :dob, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :dob, :class => "date_picker" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :shirt_size %><br />
-    <%= f.collection_select(:shirt_size, Shirt.all, :size, :size) %>
+  <div class="control-group">
+    <%= f.label :shirt_size, :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:shirt_size, Shirt.all, :size, :size) %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group actions">
+    <div class="controls">
+      <%= f.submit(:class=>"btn btn-success") %>
+    </div>
   </div>
 <% end %>

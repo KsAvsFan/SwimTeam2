@@ -43,7 +43,7 @@ class SplitsController < ApplicationController
 
     respond_to do |format|
       if @split.save
-        format.html { redirect_to @split, notice: 'Split was successfully created.' }
+        format.html { redirect_to splits_url, notice: 'Split was successfully created.' }
         format.json { render json: @split, status: :created, location: @split }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class SplitsController < ApplicationController
     
     respond_to do |format|
       if @split.update_attributes(params[:split])
-        format.html { redirect_to @split, notice: 'Split was successfully updated.' }
+        format.html { redirect_to splits_url, notice: 'Split was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

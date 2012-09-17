@@ -17,12 +17,12 @@
 
 <p>
   <b>Dob:</b>
-  <%= @swimmer.dob %>
+  <%= @swimmer.dob.strftime("%D") %>
 </p>
 
 <p>
   <b>Email:</b>
-  <%= @swimmer.email %>
+  <%= mail_to(@swimmer.email) %>
 </p>
 
 <p>
