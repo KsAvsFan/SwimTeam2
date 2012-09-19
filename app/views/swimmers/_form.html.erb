@@ -14,7 +14,12 @@
   <div class="control-group">
     <%= f.label :family_id, :class => "control-label" %>
     <div class="controls">
-      <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+      <% if current_user.admin? %>
+        <%= f.collection_select(:family_id, Family.all, :id, :name) %>
+      <% else %>
+        <%= f.text_field :name, :value=>"#{@current_user.families.first.name}", :disabled => "disabled", :class => "input-large disabled"%>
+        <%= hidden_field_tag "family_id", current_user.families.first.id %>
+      <% end %>
     </div>
   </div>  
   <div class="control-group">

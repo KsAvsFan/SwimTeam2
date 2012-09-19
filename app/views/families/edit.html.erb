@@ -1,5 +1,7 @@
 <h4>Editing: Family</h4>
-
+Current User ID: <%= current_user.id %> | 
+Current Family ID: <%= @family.id %> | 
+Current Family User_ID: <%= @family.user_id %>
 <%= render 'form' %>
 
 <%= link_to 'Show', @family %> |

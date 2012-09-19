@@ -1,4 +1,5 @@
 class SplitsController < ApplicationController
+  load_and_authorize_resource
   # GET /splits
   # GET /splits.json
   def index

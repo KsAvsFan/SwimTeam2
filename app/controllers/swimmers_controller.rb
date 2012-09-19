@@ -1,4 +1,5 @@
 class SwimmersController < ApplicationController
+  load_and_authorize_resource
   # GET /swimmers
   # GET /swimmers.json
   def index
@@ -24,7 +25,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers/new.json
   def new
     @swimmer = Swimmer.new
-    @swimmer.family_id = params[:family]
+    @swimmer.family_id = params[:family_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @swimmer }
@@ -41,6 +42,8 @@ class SwimmersController < ApplicationController
   def create
     @swimmer = Swimmer.new(params[:swimmer])
     @swimmer.gender = params[:gender]
+    params[:swimmer][:family_id] ? @swimmer.family_id=params[:swimmer][:family_id] : 
+    @swimmer.family_id = params[:family_id]
     respond_to do |format|
       if @swimmer.save
         format.html { redirect_to @swimmer, notice: 'Swimmer was successfully created.' }

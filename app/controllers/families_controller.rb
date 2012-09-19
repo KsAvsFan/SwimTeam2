@@ -1,4 +1,5 @@
 class FamiliesController < ApplicationController
+  load_and_authorize_resource
   # GET /families
   # GET /families.json
   def index
@@ -41,7 +42,7 @@ class FamiliesController < ApplicationController
   # POST /families.json
   def create
     @family = Family.new(params[:family])
-
+    @family.user_id = current_user.id
     respond_to do |format|
       if @family.save
         format.html { redirect_to @family, notice: 'Family was successfully created.' }
@@ -57,7 +58,6 @@ class FamiliesController < ApplicationController
   # PUT /families/1.json
   def update
     @family = Family.find(params[:id])
-
     respond_to do |format|
       if @family.update_attributes(params[:family])
         format.html { redirect_to @family, notice: 'Family was successfully updated.' }
