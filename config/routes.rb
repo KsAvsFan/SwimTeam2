@@ -13,5 +13,5 @@ SwimTeam2::Application.routes.draw do
 
   resources :teams
   
-  root :to => 'seasons#index'
+  root :to => 'families#index'
 end

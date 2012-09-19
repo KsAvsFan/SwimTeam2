@@ -39,10 +39,12 @@
           <a class="brand" href="<%= root_path %>">SwimCoach</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Seasons", seasons_path  %></li>
-              <li><%= link_to "Families", families_path  %></li>
-              <li><%= link_to "Swimmers", swimmers_path  %></li>
-              <li><%= link_to "Splits", splits_path  %></li>
+              <% if current_user.try(:admin?) %>
+                <li><%= link_to "Seasons", seasons_path  %></li>
+                <li><%= link_to "Families", families_path  %></li>
+                <li><%= link_to "Swimmers", swimmers_path  %></li>
+                <li><%= link_to "Splits", splits_path  %></li>
+              <% end %>
             </ul>
             <ul class="nav pull-right" id="main-menu-right">
               <% if user_signed_in? %>
@@ -83,7 +85,7 @@
       </div><!--/content-->
 
       <footer>
-        <p>&copy; KsAvsFan 2012</p>
+        <p class="pull-right">&copy; KsAvsFan 2012</p>
       </footer>
 
     </div> <!-- /container -->

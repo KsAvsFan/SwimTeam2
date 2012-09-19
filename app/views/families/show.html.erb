@@ -1,3 +1,5 @@
+<!-- TODO: Format all show.html.erb to look more like the edit forms -->
+
 <p id="notice"><%= notice %></p>
 
 <p><b>Family Name: <%= @family.name %></b></p>
@@ -5,18 +7,18 @@
 <div class="field-div">
   <p><b>Primary Contact</b></p>
   <p><%= @family.c1_first_name %> <%= @family.c1_last_name %> - <%= @family.c1_relationship %></p>
-  <p>Home phone: <%= number_to_phone(@family.c1_home_phone.to_i, :area_code => true) %></p>
-  <p>Mobile phone: <%= number_to_phone(@family.c1_mobile_phone.to_i, :area_code => true) %></p>
-  <p>Work phone: <%= number_to_phone(@family.c1_work_phone.to_i, :area_code => true) %></p>
+  <p>Home phone: <%= @family.c1_home_phone == "" ? "None" : number_to_phone(@family.c1_home_phone.to_i, :area_code => true) %></p>
+  <p>Mobile phone: <%= @family.c1_mobile_phone == "" ? "None" : number_to_phone(@family.c1_mobile_phone.to_i, :area_code => true) %></p>
+  <p>Work phone: <%= @family.c1_work_phone == "" ? "None" : number_to_phone(@family.c1_work_phone.to_i, :area_code => true) %></p>
   <p><%= mail_to(@family.c1_email) %></p>
 </div>
 
 <div class = "field-div">
   <p><b>Secondary Contact</b></p>
   <p><%= @family.c2_first_name %> <%= @family.c2_last_name %> - <%= @family.c2_relationship %></p>
-  <p>Home phone: <%= number_to_phone(@family.c1_home_phone.to_i, :area_code => true) %></p>
-  <p>Mobile phone: <%= number_to_phone(@family.c1_mobile_phone.to_i, :area_code => true) %></p>
-  <p>Work phone: <%= number_to_phone(@family.c1_work_phone.to_i, :area_code => true) %></p>
+  <p>Home phone: <%= @family.c2_home_phone == "" ? "None" : number_to_phone(@family.c2_home_phone.to_i, :area_code => true) %></p>
+  <p>Mobile phone: <%= @family.c2_mobile_phone == "" ? "None" : number_to_phone(@family.c2_mobile_phone.to_i, :area_code => true) %></p>
+  <p>Work phone: <%= @family.c2_work_phone == "" ? "None" : number_to_phone(@family.c2_work_phone.to_i, :area_code => true) %></p>
   <p><%= mail_to(@family.c2_email) %></p>
 </div>
 
@@ -31,6 +33,7 @@
   <% @swimmers.each do |swimmer| %>
     <%= link_to(swimmer.full_name, swimmer_path(swimmer.id)) %></p>
   <% end %>
+</div>
 <%= link_to 'Edit', edit_family_path(@family) %> |
 <%= link_to 'Back', families_path %> | <%= link_to 'See Siblings', swimmers_path(:filter => @family.id) %> |
 <%= link_to 'Add Swimmer', new_swimmer_path(:family=>@family.id) %>
