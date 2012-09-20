@@ -82,5 +82,6 @@ class SeasonsController < ApplicationController
     end
   end
 
+  before_filter :authenticate_user!
   
 end

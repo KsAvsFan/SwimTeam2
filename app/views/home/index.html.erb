@@ -1,0 +1,12 @@
+<div class="hero-unit">
+	<p>Welcome to...</p>
+	<h1> SwimCoach! </h1>
+	<p> Home of the <%= link_to "JCC", "http://www.jcckc.org/index.php?src=gendocs&ref=YouthAquatics&category=sports_fitness&submenu=FitnessSports", :target=>"_blank" %> Non-competitive Swim Team </p>
+	<%= link_to "Learn More", "#", :class => "btn btn-large" %>
+	<%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-large" %>
+	<p></p>
+	<div>	
+		<p>Already signed up? <%= link_to "Log In!", new_user_session_path %></p>
+	</div>
+</div>	
+

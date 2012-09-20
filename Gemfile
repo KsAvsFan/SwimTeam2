@@ -5,13 +5,14 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'pg', '0.12.2'
 gem 'devise'
 gem 'cancan'
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails', '2.10.0'
-end
+# group :development, :test do
+#   gem 'sqlite3'
+#   gem 'rspec-rails', '2.10.0'
+# end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,9 +28,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :production do
-  gem 'pg', '0.12.2'
-end
+# group :production do
+  # gem 'pg', '0.12.2'
+# end
 
 gem 'jquery-rails'
 

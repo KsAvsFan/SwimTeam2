@@ -80,4 +80,7 @@ class FamiliesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  before_filter :authenticate_user!
+  
 end

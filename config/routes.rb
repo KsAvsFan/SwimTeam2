@@ -12,6 +12,8 @@ SwimTeam2::Application.routes.draw do
   resources :families
 
   resources :teams
+
+  resources :home
   
-  root :to => 'families#index'
+  root :to => 'home#index'
 end
